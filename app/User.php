@@ -37,11 +37,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            $user->profile()->create([
+                'bio' => 'Hey, I have a high number of insecurities, which is why I am using this web app',
+            ]);
+        });
+    }
+
     public function achievements() {
         return $this->HasMany(achievement::class)->OrderBy('updated_at', 'DESC');
     }
 
     public function profile() {
         return $this->HasOne(profile::class);
+    }
+
+    public function comments() {
+        return $this->HasMany(comment::class);
     }
 }

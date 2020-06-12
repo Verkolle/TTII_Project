@@ -27,7 +27,10 @@ Route::patch('/profile/{user}', 'ProfileController@update')->name('profile.updat
 Route::post('/ach', 'AchievementController@store');
 Route::get('/ach/create', 'AchievementController@create');
 Route::get('/ach/{achievement}', 'AchievementController@show');
+Route::patch('/ach/{achievement}', 'AchievementController@update')->name('achievement.update');
 
+Route::post('/comment', 'CommentController@store');
+Route::get('/comment/create', 'CommentController@create');
 
 
 

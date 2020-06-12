@@ -17,6 +17,7 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->text('bio')->nullable();
+            $table->string('profile_pic')->nullable();
             $table->timestamps();
 
             $table->index('user_id');

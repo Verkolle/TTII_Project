@@ -23,6 +23,8 @@ class CreateAchievementsTable extends Migration
 
             $table->index('user_id');
         });
+
+
     }
 
     /**
@@ -33,5 +35,6 @@ class CreateAchievementsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('achievements');
+
     }
 }

@@ -51,6 +51,7 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-6">
                     <button class="btn btn-primary" >Update user data</button>
+                    <a href="{{url()->previous()}}"><button type="button" class="btn" >Cancel</button></a>
                 </div>
             </div>
         </form>
