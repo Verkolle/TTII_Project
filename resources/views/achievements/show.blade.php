@@ -10,24 +10,20 @@
         <p>{{ $achievement->value }}</p>
 
         <div>
-            <a href="/comment/create" class="pb-3"><button class="btn btn-primary">Add comment</button></a>
+            @auth
+                <a href="/ach/{{ $achievement->id }}/comment/create" class="pb-3"><button class="btn btn-primary">Add comment</button></a>
+            @endauth
         </div>
 
         <div class="pt-6">
-            <div>
-                <h3>User 1</h3>
-                <p>You suck!!! Boooo!!!!</p>
-                <p>12.06.2020<p>
-            </div>
-            <div>
-                <h3>User 2</h3>
-                <p>No u! Ha, gottem</p>
-                <p>12.06.2020<p>
-            </div>
-            <div>
-                <h3>{{ $achievement->user->username }}</h3>
-                <p>Guys can you like stfu?!</p>
-                <p>12.06.2020<p>
+            <div class="p-3">
+                @foreach($achievement->comments as $comment)
+                    <div>
+                        <a href="/profile/{{$comment->writer_id}}"><h4>{{ $comment->writer_username }}</h4></a>
+                        <p>{{ $comment->content }}</p>
+                        <p>{{ $comment->updated_at }}<p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

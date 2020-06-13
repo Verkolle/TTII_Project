@@ -21,7 +21,9 @@
                             <p>{{ $achievement->description }}</p>
                             <p>{{ $achievement->value }}</p>
                         </a>
-                        <a href="#">#</a>
+                        @can('update', $user->profile)
+                            <a href="/ach/{{ $achievement->id }}/edit">Edit achievement</a>
+                        @endcan
                     </div>
                 @endforeach
             </div>

@@ -5,7 +5,7 @@
         <div>
             <h1 class="text-md-center pb-3">Add new comment</h1>
         </div>
-        <form action="/comment" enctype="multipart/form-data" method="post">
+        <form action="/ach/{{ request()->route('achievement') }}/comment" enctype="multipart/form-data" method="post">
             @csrf
             <div class="form-group row">
                 <label for="content" class="col-md-4 col-form-label text-md-right">{{ __('Your comment') }}</label>

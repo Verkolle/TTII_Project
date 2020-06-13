@@ -21,7 +21,7 @@ class ProfileController extends Controller
         $this->authorize('update', $user->profile);
         $data = request()->validate([
             'bio' => '',
-            'profile_pic' => '',
+            'profile_pic' => 'required|image',
         ]);
 
         if (request('profile_pic')) {

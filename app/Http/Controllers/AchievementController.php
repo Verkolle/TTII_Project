@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Achievement;
+use App\User;
 use Illuminate\Http\Request;
 
 class AchievementController extends Controller
@@ -12,6 +14,34 @@ class AchievementController extends Controller
 
     public function create() {
         return view('achievements.create');
+    }
+
+    public function edit(User $user) {
+        return view('achievements.edit',compact('user'));
+    }
+
+    public function destroy(Achievement $achievement) {
+        $unneeded = $achievement;
+        
+        $unneeded->delete();
+
+        return redirect('/profile/'.auth()->user()->id);
+    }
+
+    public function update(Achievement $achievement, User $user) {
+        $data = request()->validate([
+            'value' => 'required',
+        ]);
+
+
+
+        //dd($achievement, $data);
+        //dd($data['value']);
+
+        Achievement::where(['id' => $achievement->id])->update(['value' => $data['value']]);
+
+
+        return redirect('/profile/'.auth()->user()->id);
     }
 
     public function store() {
