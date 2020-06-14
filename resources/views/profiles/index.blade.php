@@ -14,6 +14,7 @@
 
             {{--USER OPTIONS--}}
                 {{--ACHIEVEMENT ADDING--}}
+            @can('update', $user->profile)
             <div>
                 <p style="text-align: center"><b>{{__('messages.User_tools')}}</b></p>
                 <div class="p-3">
@@ -27,9 +28,11 @@
                 </div>
             </div>
             <hr/> {{--horizontal divider--}}
+            @endcan
 
             <!--ACHIEVEMENTS-->
             <div class="p-3">
+                <p style="text-align: center; font-size:20px"><b>Users achievements</b></p>
                 @foreach($user->achievements as $achievement)
                     <div class="flex" style="background-color:  #ebf4f5; padding: 15px">
                         <a href="/ach/{{ $achievement->id }}">
@@ -49,7 +52,7 @@
             </div>
 
         </div>
-        <div class="col-3" style="background-color: #b3e5ee">
+        <div class="col-3" style="background-color: #b3e5ee; position: -webkit-sticky;">
             <div id="user_picture" class="row pb-3">
                 <img src="{{ $user->profile->profilePicture()}}" alt=""
                      style="height:100%; width:100%; border: 5px solid black; margin: 10px; object-fit: cover">

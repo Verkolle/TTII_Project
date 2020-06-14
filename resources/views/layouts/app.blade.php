@@ -30,20 +30,18 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <div class="container">
                 {{--USER SEARCH BAR--}}
-                <div>
+                <div style="margin-top:13px">
                     <form action="/search" method="get">
                         <div class="form-group">
-                            <input type="search" name="search" class="form-control">
-                            <span class="form-group-btn">
-                                <button type="submit" class="btn btn-primary">Search</button>
-                            </span>
+                            <input type="search" name="search" class="form-control" placeholder="Search">
                         </div>
                     </form>
                 </div>
 
                 {{--LANGUAGE TOGGLE--}}
-                <div class="d-flex" style="margin-left:400px">
+                <div class="d-flex">
                     <a href="/lang/en" class="text-white pr-4">EN</a>
                     <a href="/lang/lv" class="text-white">LV</a>
                 </div>
@@ -51,14 +49,14 @@
                 {{--HOME BUTTON--}}
                 @guest
                 @else
-                    <div class="row" style="margin-left:200px">
+                    <div class="row">
                         <a href="/profile/{{ auth()->user()->id }}">
                             <img src="https://cdn4.iconfinder.com/data/icons/mono-color-web-mobile/250/Home-512.png"
                                  style="width:25px;height:25px;">
                         </a>
                     </div>
                 @endguest
-
+                </div>
 
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

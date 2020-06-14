@@ -38,13 +38,17 @@
                     </div>
                 </div>
             </form>
-            <form action="/ach/{{ request()->route('achievement')->id }}" method="post" style="display: inline-block">
-                @csrf
-                @method('DELETE')
-                <div style="display: inline">
-                    <button class="btn btn-outline-danger">{{__('messages.Delete_Achievement')}}</button>
-                </div>
-            </form>
+            <div style="margin-left: 367px; margin-top: 10px"> N<!--NOMRAL-->
+            {{--<div style="position: relative; left: 650px; top: -37px">--}} {{--RLATIVE POSITION--}}
+            {{--<div style="position: absolute; left: 1075px; top: 246px">--}} {{--ABSOLUTE POSITION--}}
+                <form action="/ach/{{ request()->route('achievement')->id }}" method="post" style="display: inline-block">
+                    @csrf
+                    @method('DELETE')
+                    <div style="display: inline">
+                        <button class="btn btn-outline-danger">{{__('messages.Delete_Achievement')}}</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 @endsection
