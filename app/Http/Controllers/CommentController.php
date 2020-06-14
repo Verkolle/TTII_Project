@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Achievement;
 use App\Comment;
 use App\User;
 use Illuminate\Http\Request;
@@ -16,18 +17,22 @@ class CommentController extends Controller
         return view('comments.create');
     }
 
-    public function store() {
+    public function store(Achievement $achievement) {
         $data = request()->validate([
             'content' => 'required',
         ]);
-        $kelo = User::find(auth()->user()->id);
+        $poster = User::find(auth()->user()->id);
+        $place = $achievement->id;
 
 
+        $comment = new Comment;
+        $comment->achievement_id = $place;
+        $comment->writer_id = $poster['id'];
+        $comment->writer_username = $poster['username'];
+        $comment->content = $data['content'];
 
+        $comment->save();
 
-
-        Comment::create($data);
-
-        return view( "/ach/{{ $this->achievement_id }}");
+        return redirect( '/ach/'. $achievement->id );
     }
 }

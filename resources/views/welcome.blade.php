@@ -68,12 +68,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="/profile/{{ auth()->user()->id }}">{{__('messages.Home')}}</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">{{__('messages.Login')}}</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">{{__('messages.Register')}}</a>
                         @endif
                     @endauth
                 </div>
@@ -81,11 +81,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Achievement Tracker
+                    {{__('messages.Achievement_Tracker')}}
                 </div>
 
                 <div class="links">
-                    <p>The thing you definitely don't need in your life, but we offer it anyways</p>
+                    <p>{{__('messages.bottom_text')}}</p>
                 </div>
             </div>
         </div>

@@ -17,6 +17,7 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('achievement_id');
             $table->unsignedBigInteger('writer_id');
+            $table->string('writer_username');
             $table->text('content');
             $table->timestamps();
 

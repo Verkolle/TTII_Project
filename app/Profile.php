@@ -10,7 +10,7 @@ class Profile extends Model
 
     public function profilePicture()
     {
-        $pathway = ($this->profile_pic) ? $this->profile_pic : "profile/359dH0BafGFCB3GWqzFdCDBscCxad7MFnzjJwrh6.jpeg";
+        $pathway = ($this->profile_pic) ? $this->profile_pic : "profile/base.jpeg";
         return '/storage/' . $pathway;
     }
     public function user() {

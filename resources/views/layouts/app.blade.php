@@ -19,16 +19,47 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #6edcee ">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light" style="background-color: #40a1b1">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Achievement Tracker
+                    {{__('messages.Achievement_Tracker')}}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                {{--USER SEARCH BAR--}}
+                <div>
+                    <form action="/search" method="get">
+                        <div class="form-group">
+                            <input type="search" name="search" class="form-control">
+                            <span class="form-group-btn">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
+                {{--LANGUAGE TOGGLE--}}
+                <div class="d-flex" style="margin-left:400px">
+                    <a href="/lang/en" class="text-white pr-4">EN</a>
+                    <a href="/lang/lv" class="text-white">LV</a>
+                </div>
+
+                {{--HOME BUTTON--}}
+                @guest
+                @else
+                    <div class="row" style="margin-left:200px">
+                        <a href="/profile/{{ auth()->user()->id }}">
+                            <img src="https://cdn4.iconfinder.com/data/icons/mono-color-web-mobile/250/Home-512.png"
+                                 style="width:25px;height:25px;">
+                        </a>
+                    </div>
+                @endguest
+
+
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -41,11 +72,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('messages.Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -58,7 +89,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('messages.Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
